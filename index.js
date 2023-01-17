@@ -4,7 +4,7 @@ const Intern = require('./lib/Intern')
 const Manager = require('./lib/Manager')
 //const inquirer = require('inquirer')
 //import inquirer from "inquirer";
-const generateHTML = require('./generateHTML')
+const generateHTML = require('./src/generateHTML')
 //write all of our prompts (array of objects)
 const fs = require('fs');
 // an array for user input
@@ -43,12 +43,18 @@ function init () {
             message: 'Team Managers Office Number',
             name: 'office_number',
         },
+        {
+            type: 'checkbox',
+            message: 'Would you like to add an Engineer or an Intern?',
+            name: 'addToTeam',
+            choices: ["Engineer", "Intern", "Finish Building my Team"]
+        },
     ])
     .then((response) => {
         console.log(response)
-        const createHTML = generateMarkdown(response);
+        const createHTML = generateHTML(response);
         console.log(createHTML);
-        writeToFile('index.html', createHTML);
+        writeToFile('./dist/index.html', createHTML);
     });
 }
 
