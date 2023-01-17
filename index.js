@@ -1,10 +1,23 @@
-const Engineer = require('./lib/Engineer')
-const Intern = require('./lib/Intern.js')
-const Manager = require('./lib/Manager.js')
 const inquirer = require('inquirer')
-const generateHTML = require('generateHTML')
+const Engineer = require('./lib/Engineer')
+const Intern = require('./lib/Intern')
+const Manager = require('./lib/Manager')
+//const inquirer = require('inquirer')
+//import inquirer from "inquirer";
+const generateHTML = require('./generateHTML')
 //write all of our prompts (array of objects)
+const fs = require('fs');
+// an array for user input
+const questions = [];
+//to make inquire prompt cleaner
 
+//Create a function to write HTML file
+function writeToFile(fileName, data) {
+    //fs write file goes here (takes js data and creates a literal file on comp)
+    fs.writeFile(fileName, data, (err) =>
+  err ? console.error(err) : console.log('Success!')
+);
+}         
 
 function init () {
     inquirer
