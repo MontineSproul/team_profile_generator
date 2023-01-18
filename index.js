@@ -7,6 +7,7 @@ const Manager = require('./lib/Manager')
 const generateHTML = require('./src/generateHTML')
 //write all of our prompts (array of objects)
 const fs = require('fs');
+const Employee = require('./lib/Employee')
 // an array for user input
 const questions = [];
 //to make inquire prompt cleaner
@@ -49,6 +50,7 @@ function init () {
             name: 'addToTeam',
             choices: ["Engineer", "Intern", "Finish Building my Team"]
         },
+       
     ])
     .then((response) => {
         console.log(response)
@@ -56,6 +58,51 @@ function init () {
         console.log(createHTML);
         writeToFile('./dist/index.html', createHTML);
     });
+    
+}
+function initEngineer () {
+    init();
+    if (employee.addToTeam === Engineer) {
+        inquirer 
+        .prompt([
+            {
+                type: 'input',
+                message: 'Engineers Name',
+                name: 'name',
+            },
+            {
+                type: 'input',
+                message: 'Engineers Employee ID',
+                name: 'employeeID',
+            },
+            {
+                type: 'input',
+                message: 'Engineers Email',
+                name: 'email',
+            },
+            {
+                type: 'input',
+                message: 'Engineers Office Number',
+                name: 'office_number',
+            },
+            {
+                type: 'checkbox',
+                message: 'Would you like to add an Engineer or an Intern?',
+                name: 'addToTeam',
+                choices: ["Engineer", "Intern", "Finish Building my Team"]
+            },
+            
+
+           
+        ])
+    
+    .then((response) => {
+        console.log(response)
+        const createHTML = generateHTML(response);
+        console.log(createHTML);
+        writeToFile('./dist/index.html', createHTML);
+    });
+}
 }
 
-init();
+initEngineer();

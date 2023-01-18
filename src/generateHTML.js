@@ -9,7 +9,7 @@ function generateHTML (employees) {
         <title>Document</title>
     </head>
     <body>
-    <h1>Team Roster</h1>
+    <h1>My Team</h1>
     <h2> ${employees.name} </h2>
     <h2> ${employees.employeeID} </h2>
     <h2> <a href="mailto: ${employees.email}" target="_blank"> ${employees.email} </a></h2>
