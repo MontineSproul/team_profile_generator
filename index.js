@@ -16,7 +16,7 @@ var employeeData = [];
 function writeToFile(fileName, data) {
     //fs write file goes here (takes js data and creates a literal file on comp)
     fs.writeFile(fileName, data, (err) =>
-  err ? console.error(err) : console.log('Success!')
+  err ? console.error(err) : console.log('Your Team is complete!')
 );
 }         
 
@@ -60,9 +60,9 @@ function init () {
         if (employee === "Engineer" ||  employee === "Intern") {
                  initEngineer(employee);
         } else {
-            const createHTML = generateHTML(response);
-            console.log(createHTML);
-            writeToFile('./dist/index.html', createHTML);
+            // const createHTML = generateHTML(employeeData);
+            // console.log(createHTML);
+            // writeToFile('./dist/index.html', createHTML);
         }
     });
     
@@ -87,7 +87,7 @@ function initEngineer (employee) {
         },
         {
             type: 'input',
-            message: `${employee} Office Number`,
+            message: `${employee === "Engineer" ? "Engineers GitHub" : "Interns School Number"}  `,
             name: 'office_number',
         },
         {
@@ -99,12 +99,20 @@ function initEngineer (employee) {
         
     ])
     .then((response) => {
-        console.log(response)
         var newEmployee = response.addToTeam;
+        if (newEmployee === "Engineer") {
+            var engineer = new Engineer(response.name, response.employeeID, response.email, response.office_number)
+            employeeData.push(engineer);
+        } else {
+            var intern = new Intern(response.name, response.employeeID, response.email, response.office_number)
+            employeeData.push(intern);
+        }
+        console.log(response)
        if (newEmployee === "Engineer" || newEmployee === "Intern") {
-            initEngineer();
+            initEngineer(newEmployee);
        } else {
-        const createHTML = generateHTML(response);
+        const createHTML = generateHTML(employeeData);
+        console.log(employeeData)
         console.log(createHTML);
         writeToFile('./dist/index.html', createHTML);
        }
