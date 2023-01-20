@@ -60,9 +60,9 @@ function init () {
         if (employee === "Engineer" ||  employee === "Intern") {
                  initEngineer(employee);
         } else {
-            // const createHTML = generateHTML(employeeData);
-            // console.log(createHTML);
-            // writeToFile('./dist/index.html', createHTML);
+            const createHTML = generateHTML(employeeData);
+            console.log(createHTML);
+            writeToFile('./dist/index.html', createHTML);
         }
     });
     
@@ -112,7 +112,6 @@ function initEngineer (employee) {
             initEngineer(newEmployee);
        } else {
         const createHTML = generateHTML(employeeData);
-        console.log(employeeData)
         console.log(createHTML);
         writeToFile('./dist/index.html', createHTML);
        }
