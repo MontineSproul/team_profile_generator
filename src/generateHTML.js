@@ -7,10 +7,11 @@ function generateHTML (employees) {
         for (let i = 1; i < employeeData.length; i++) {
            employeeHTML +=  `   
              <div>
-            <h2> ${employeeData[i].name} </h2>
-            <h2> ${employeeData[i].id} </h2>
-            <h2> <a href="mailto: ${employeeData[i].email}" target="_blank"> ${employeeData[i].email} </a></h2>
-            <h2> ${employeeData[i].getRole() === "Engineer" ? employeeData[i].GitHub : employeeData[i].school} </h2>
+            <h2>Employee Name: ${employeeData[i].name} </h2>
+            <h2>Employee ID Number: ${employeeData[i].id} </h2>
+            <h2>Employee Email Address: <a href="mailto: ${employeeData[i].email}" target="_blank"> ${employeeData[i].email} </a></h2>
+            <h2>Employee Role: ${employeeData[i].getRole()} </h2>
+            <h2><a href="https://github.com/${employeeData[i].Github} " >${employeeData[i].getRole() === "Engineer" ? employeeData[i].Github : employeeData[i].school}</a> </h2>
             </div>`;
     }
     return employeeHTML;
@@ -32,7 +33,7 @@ function generateHTML (employees) {
     <h2> ${employees[0].name} </h2>
     <h2> ${employees[0].id} </h2>
     <h2> <a href="mailto: ${employees[0].email}" target="_blank"> ${employees[0].email} </a></h2>
-    <h2> ${employees[0].office_number} </h2>
+    <h2>Office Number: ${employees[0].officeNumber} </h2>
     </div>
     ${addEmployee(employees)}
     </body>
