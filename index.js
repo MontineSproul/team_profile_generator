@@ -87,7 +87,7 @@ function initEngineer (employee) {
         },
         {
             type: 'input',
-            message: `${employee === "Engineer" ? "Engineers GitHub" : "Interns School Number"}  `,
+            message: `${employee === "Engineer" ? "Engineers GitHub" : "Interns School Name"}  `,
             name: 'office_number',
         },
         {
@@ -101,10 +101,10 @@ function initEngineer (employee) {
     .then((response) => {
         var newEmployee = response.addToTeam;
         if (newEmployee === "Engineer") {
-            var engineer = new Engineer(response.name, response.employeeID, response.email, response.office_number)
+            var engineer = new Engineer(response.name, response.employeeID, response.email, response.Github)
             employeeData.push(engineer);
         } else {
-            var intern = new Intern(response.name, response.employeeID, response.email, response.office_number)
+            var intern = new Intern(response.name, response.employeeID, response.email, response.school)
             employeeData.push(intern);
         }
         console.log(response)

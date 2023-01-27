@@ -22,7 +22,10 @@
   },
   "homepage": "https://github.com/MontineSproul/team_profile_generator#readme",
   "dependencies": {
-    "inquirer": "^8.2.4"
+    "inquirer": "^8.2.5"
   },
-  "description": ""
+  "description": "",
+  "devDependencies": {
+    "jest": "^29.3.1"
+  }
 }
