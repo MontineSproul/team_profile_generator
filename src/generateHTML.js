@@ -13,7 +13,11 @@ function generateHTML (employees) {
            <div class="card-body">
              <p>Employee ID: ${employeeData[i].id} </p>
              <p>Email: <a href="mailto: ${employeeData[i].email}" target="_blank"> ${employeeData[i].email} </a></p>
-             <p><a href="https://github.com/${employeeData[i].Github} "> ${employeeData[i].getRole() === "Engineer" ? employeeData[i].Github : employeeData[i].school}</a></p>
+             <p>${employeeData[i].getRole() === "Engineer" ? ( 
+             `Github: <a href="https://github.com/${employeeData[i].Github}"> ${employeeData[i].Github}</a>`
+             ) :  (
+                  `School: ${employeeData[i].school}`
+             )} </p>
              </div>
              </div>
              </div>`;

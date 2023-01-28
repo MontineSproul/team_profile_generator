@@ -88,7 +88,7 @@ function initEngineer (employee) {
         {
             type: 'input',
             message: `${employee === "Engineer" ? "Engineers GitHub" : "Interns School Name"}  `,
-            name: 'office_number',
+            name: 'extra',
         },
         {
             type: 'list',
@@ -100,17 +100,18 @@ function initEngineer (employee) {
     ])
     .then((response) => {
         var newEmployee = response.addToTeam;
-        if (newEmployee === "Engineer") {
-            var engineer = new Engineer(response.name, response.employeeID, response.email, response.Github)
+        if (employee === "Engineer") {
+            var engineer = new Engineer(response.name, response.employeeID, response.email, response.extra)
             employeeData.push(engineer);
         } else {
-            var intern = new Intern(response.name, response.employeeID, response.email, response.school)
+            var intern = new Intern(response.name, response.employeeID, response.email, response.extra)
             employeeData.push(intern);
         }
         console.log(response)
        if (newEmployee === "Engineer" || newEmployee === "Intern") {
             initEngineer(newEmployee);
        } else {
+        console.log(employeeData)
         const createHTML = generateHTML(employeeData);
         console.log(createHTML);
         writeToFile('./dist/index.html', createHTML);
